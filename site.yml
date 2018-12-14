@@ -1,6 +1,6 @@
 ---
 #
-# Playbook to install the ELK stack + Beats
+# Playbook to install the ELK, Prometheus, Alertmanager, Node Exporter, Grafana
 #
 - hosts: vagrant
   remote_user: vagrant
@@ -13,7 +13,7 @@
   - { role: java }
   - { role: elasticsearch }
   - { role: kibana }
-  # - { role: logstash }
+  - { role: logstash }
   - { role: grafana }
   - { role: prometheus }
   - { role: node_exporter }
