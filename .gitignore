@@ -1,0 +1,13 @@
+# Ansible
+hosts
+*.retry
+
+# Vagrant
+.vagrant/
+
+# Misc
+*.log
+assets/
+venv/
+.vscode/
+

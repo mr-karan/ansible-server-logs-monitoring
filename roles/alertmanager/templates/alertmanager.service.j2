@@ -1,0 +1,16 @@
+[Unit]
+Description=manages alertmanager as a service
+Wants=network-online.target
+After=network.target
+
+[Service]
+User={{alertmanager_user}}
+Group={{alertmanager_user}}
+Type=simple
+ExecStart=/usr/local/bin/alertmanager \
+    --config.file {{alertmanager_config_dir}} \
+    --storage.path {{alertmanager_db_dir}}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

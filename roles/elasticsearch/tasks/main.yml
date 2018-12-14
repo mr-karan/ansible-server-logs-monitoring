@@ -1,0 +1,41 @@
+---
+# Role to install Elasticsearch 6.x (Follows steps in https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html)
+
+- name: Import the Elasticsearch PGP Key
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Install apt-transport-https
+  apt:
+   name: apt-transport-https
+   update_cache: yes
+
+- name: Add APT repo to source list
+  apt_repository:
+   repo: deb https://artifacts.elastic.co/packages/6.x/apt stable main
+   state: present
+   filename: /etc/apt/sources.list.d/elastic-6.x #.list extension is automatically added by ansible
+
+- name: Install Elasticsearch
+  apt:
+   name: elasticsearch
+   update_cache: yes
+
+- name: Ensure elasticsearch binds only to localhost
+  lineinfile:
+   destfile: /etc/elasticsearch/elasticsearch.yml
+   regexp: 'network.host:'
+   line: 'network.host: "{{elasticsearch_host}}"'
+
+- name: Setting Elasticsearch port address
+  lineinfile:
+   destfile: /etc/elasticsearch/elasticsearch.yml
+   regexp: 'http.port:'
+   line: 'http.port: {{elasticsearch_port}}'
+
+- name: Starting Elasticsearch as a service
+  service:
+   name: elasticsearch
+   state: started
+   enabled: yes

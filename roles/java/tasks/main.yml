@@ -1,0 +1,18 @@
+---
+# Role to install Java8 (Follows Java section in https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04)
+
+
+- name: Add the Oracle Java PPA to apt
+  apt_repository:
+   repo: ppa:webupd8team/java
+
+- name: Automatically accept the Oracle license
+  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+
+# Install Java
+
+- name: Install latest stable version of Oracle Java 8.x
+  apt:
+   name: oracle-java8-installer
+   state: present
+   update_cache: yes

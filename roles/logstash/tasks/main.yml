@@ -1,0 +1,26 @@
+---
+# Role to install Logstash 6.x (Follows steps in https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
+# If elasticsearch role is skipped, copy the pre-reqs of adding elastic apt-repo required here.
+
+- name: Install Logstash with apt
+  apt:
+   name: logstash
+   update_cache: yes
+
+- name: Setting Logstash port address
+  lineinfile:
+   destfile: /etc/logstash/logstash.yml
+   regexp: 'http.host:'
+   line: 'http.host: {{logstash_host}}'
+
+- name: Setting Logstash port address
+  lineinfile:
+   destfile: /etc/logstash/logstash.yml
+   regexp: 'http.port:'
+   line: 'http.port: {{logstash_port}}'
+
+- name: Starting Logstash as a service
+  service:
+   name: logstash
+   state: started
+   enabled: yes

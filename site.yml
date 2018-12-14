@@ -1,0 +1,20 @@
+---
+#
+# Playbook to install the ELK stack + Beats
+#
+- hosts: vagrant
+  remote_user: vagrant
+  become: yes
+  vars_files:
+  - roles/elasticsearch/vars/main.yml
+  - roles/kibana/vars/main.yml
+  # become_user: vagrant
+  roles:
+  - { role: java }
+  - { role: elasticsearch }
+  - { role: kibana }
+  # - { role: logstash }
+  - { role: grafana }
+  - { role: prometheus }
+  - { role: node_exporter }
+  - { role: alertmanager }

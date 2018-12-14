@@ -1,0 +1,32 @@
+---
+# Role to install Kibana 6.x (Follows steps in https://www.elastic.co/guide/en/kibana/current/deb.html)
+# If elasticsearch role is skipped, copy the pre-reqs of adding elastic apt-repo required here.
+
+- name: Install Kibana with apt
+  apt:
+   name: kibana
+   update_cache: yes
+
+- name: Ensure Kibana binds only to localhost
+  lineinfile:
+   destfile: /etc/kibana/kibana.yml
+   regexp: 'server.host:'
+   line: 'server.host: {{kibana_host}}'
+
+- name: Setting Kibana port address
+  lineinfile:
+   destfile: /etc/kibana/kibana.yml
+   regexp: 'server.port:'
+   line: 'server.port: {{kibana_port}}'
+
+- name: Setting Elasticsearch URL in Kibana Config
+  lineinfile:
+   destfile: /etc/kibana/kibana.yml
+   regexp: 'elasticsearch.url:'
+   line: 'elasticsearch.url: "http://{{elasticsearch_host}}:{{elasticsearch_port}}"'
+
+- name: Starting Kibana as a service
+  service:
+   name: kibana
+   state: started
+   enabled: yes

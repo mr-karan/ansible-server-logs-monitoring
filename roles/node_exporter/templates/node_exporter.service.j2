@@ -1,0 +1,13 @@
+[Unit]
+Description=manages node exporter as a service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User={{node_exporter_user}}
+Group={{node_exporter_user}}
+Type=simple
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=multi-user.target
