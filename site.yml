@@ -10,11 +10,11 @@
   - roles/kibana/vars/main.yml
   # become_user: vagrant
   roles:
-  - { role: java }
-  - { role: elasticsearch }
-  - { role: kibana }
-  - { role: logstash }
-  - { role: grafana }
+  # - { role: java }
+  # - { role: elasticsearch }
+  # - { role: kibana }
+  # - { role: logstash }
+  # - { role: grafana }
   - { role: prometheus }
-  - { role: node_exporter }
+  # - { role: node_exporter }
   - { role: alertmanager }

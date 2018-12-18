@@ -1,6 +1,6 @@
 prometheus_user: root
 prometheus_db_dir: /var/lib/prometheus/
-prometheus_config_dir: /etc/prometheus/prometheus.yml
+prometheus_config_dir: /etc/prometheus
 prometheus_version: 2.5.0
 go_arch_map:
   i386: '386'

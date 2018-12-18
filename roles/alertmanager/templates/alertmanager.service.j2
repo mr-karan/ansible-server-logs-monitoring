@@ -8,7 +8,7 @@ User={{alertmanager_user}}
 Group={{alertmanager_user}}
 Type=simple
 ExecStart=/usr/local/bin/alertmanager \
-    --config.file {{alertmanager_config_dir}} \
+    --config.file {{alertmanager_config_dir}}/alertmanager.yml \
     --storage.path {{alertmanager_db_dir}}
 Restart=always
 
