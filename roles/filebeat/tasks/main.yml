@@ -1,6 +1,21 @@
 ---
 # Role to install Filebeat 6.x (Follows steps in https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation.html)
-# If elasticsearch role is skipped, copy the pre-reqs of adding elastic apt-repo required here.
+
+- name: Import the Elasticsearch PGP Key
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Install apt-transport-https
+  apt:
+   name: apt-transport-https
+   update_cache: yes
+
+- name: Add APT repo to source list
+  apt_repository:
+   repo: deb https://artifacts.elastic.co/packages/6.x/apt stable main
+   state: present
+   filename: /etc/apt/sources.list.d/elastic-6.x #.list extension is automatically added by ansible
 
 - name: Install Filebeat with apt
   apt:
