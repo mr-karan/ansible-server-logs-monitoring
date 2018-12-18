@@ -8,7 +8,7 @@
   vars_files:
   - roles/elasticsearch/vars/main.yml
   - roles/kibana/vars/main.yml
-  become_user: {{control_user}}
+  # become_user: {{control_user}}
   roles:
   - { role: java }
   - { role: elasticsearch }

@@ -1,6 +1,4 @@
 control_host: vagrant
-control_user: root
-
-# app_server1 should be present in inventory
+# control_user: root
 node_host: vagrant
-node_user: root
+# node_user: root
