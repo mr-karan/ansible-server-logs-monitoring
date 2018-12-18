@@ -7,7 +7,7 @@ After=network-online.target
 User={{node_exporter_user}}
 Group={{node_exporter_user}}
 Type=simple
-ExecStart=/usr/local/bin/node_exporter --collectors.enabled=supervisord,systemd,ntp
+ExecStart=/usr/local/bin/node_exporter --collector.supervisord --collector.systemd --collector.ntp
 
 [Install]
 WantedBy=multi-user.target

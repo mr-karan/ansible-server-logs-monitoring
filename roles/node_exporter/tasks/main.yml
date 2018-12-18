@@ -36,7 +36,6 @@
     mode: 0750
     # owner: "{{ node_exporter_system_user }}"
     # group: "{{ node_exporter_system_group }}"
-  notify: restart node_exporter
   when: not ansible_check_mode
 
 - name: Copy the Node Exporter systemd service file
@@ -46,4 +45,9 @@
     owner: root
     group: root
     mode: 0644
-  notify: restart node_exporter
+
+- name: Starting node_exporter as a service
+  service:
+   name: node_exporter
+   state: started
+   enabled: yes
