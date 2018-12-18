@@ -1,2 +1,8 @@
 node_exporter_version: 0.17.0
 node_exporter_user: root
+go_arch_map:
+  i386: '386'
+  x86_64: 'amd64'
+  aarch64: 'arm64'
+  armv7l: 'armv7'
+  armv6l: 'armv6'

@@ -2,19 +2,19 @@
 #
 # Playbook to install the ELK, Prometheus, Alertmanager, Node Exporter, Grafana
 #
-- hosts: vagrant
-  remote_user: vagrant
+- hosts: {{control_host}}
+  remote_user: {{control_user}}
   become: yes
   vars_files:
   - roles/elasticsearch/vars/main.yml
   - roles/kibana/vars/main.yml
-  # become_user: vagrant
+  become_user: {{control_user}}
   roles:
-  # - { role: java }
-  # - { role: elasticsearch }
-  # - { role: kibana }
-  # - { role: logstash }
-  # - { role: grafana }
+  - { role: java }
+  - { role: elasticsearch }
+  - { role: kibana }
+  - { role: logstash }
+  - { role: grafana }
   - { role: prometheus }
-  # - { role: node_exporter }
+  - { role: node_exporter }
   - { role: alertmanager }

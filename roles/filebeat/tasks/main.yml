@@ -1,0 +1,14 @@
+---
+# Role to install Filebeat 6.x (Follows steps in https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation.html)
+# If elasticsearch role is skipped, copy the pre-reqs of adding elastic apt-repo required here.
+
+- name: Install Filebeat with apt
+  apt:
+   name: filebeat
+   update_cache: yes
+
+- name: Starting Filebeat as a service
+  service:
+   name: filebeat
+   state: started
+   enabled: yes

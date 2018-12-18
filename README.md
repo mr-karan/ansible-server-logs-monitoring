@@ -4,6 +4,10 @@ Server Monitoring Playbook
 
 # Setup
 
+# Running it on host
+
+`ansible-playbook control.yml -i inventory -v --ssh-extra-args="-o IdentitiesOnly=yes"`
+
 # Notes **TODO**
 - If you're on `macOS` chances are that you'll need to install `GNU Tar`, the `bsd` tar isn't compatible with Ansible `unarchive` command.
 Use `brew install gnu-tar` to install.
