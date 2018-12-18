@@ -1,4 +1,4 @@
 control_host: vagrant
-# control_user: root
+control_user: root
 node_host: vagrant
-# node_user: root
+node_user: root
