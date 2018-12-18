@@ -45,8 +45,8 @@
     group: root
     mode: 0644
 
-- name: Starting node_exporter as a service
+- name: Starting node-exporter as a service
   service:
-   name: node_exporter
+   name: node-exporter
    state: started
    enabled: yes
