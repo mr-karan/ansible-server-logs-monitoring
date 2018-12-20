@@ -7,17 +7,13 @@
    name: logstash
    update_cache: yes
 
-- name: Setting Logstash port address
-  lineinfile:
-   destfile: /etc/logstash/logstash.yml
-   regexp: 'http.host:'
-   line: 'http.host: {{logstash_host}}'
-
-- name: Setting Logstash port address
-  lineinfile:
-   destfile: /etc/logstash/logstash.yml
-   regexp: 'http.port:'
-   line: 'http.port: {{logstash_port}}'
+- name: Copy the default logstash config
+  template:
+    src: logstash_main.conf.j2
+    dest: /etc/logstash/main.conf
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Starting Logstash as a service
   service:
