@@ -1,11 +1,11 @@
-# Server Monitoring Guide
+# Ansible - Server Logging and Monitoring Playbook
 
 ## Infra
 
 - ELK stack is used for log retention, analysis, filtering of different services, such as HAProxy, nginx access logs, logs produced by apps.
 - Grafana, Prometheus, Node Exporter, Alert Manager is used for node monitoring, graphing metrics over the time, producing alerts based on rules defined.
 
-The instances which needs to be monitored must have the following agents installed. `atom` AMI already has these, so one can use this as base image while provisioning new servers.
+The instances which needs to be monitored must have the following agents installed.
 
 [filebeat](https://www.elastic.co/products/beats/filebeat) - To ship logs to Logstash running on control instance.
 
@@ -15,17 +15,9 @@ Filebeat works on a `PUSH` mechanism, in a way that it reads the input files and
 
 Node Exporter works on a `PULL` mechanism, in a way that it exposes an HTTP endpoint, for other services to scrape metrics data from this endpoint. Prometheus should be configured to scrape data from all instances running `node_exporter`.
 
-## Security
-
-Since these have critical server data, it should be a private setup and not exposed over the Internet. Pritunl-Zero can be used to grant access for the WebUI in the control instance.
-
-Control Instance - Node Instance communication needs to happen though, where Logstash port of the control instance needs to be exposed to the node instance, and Node Exporter port of the node instance needs to be exposed to the control instance (for Prometheus to scrape). Security groups needs to be configured in AWS for this.
-
-Additionally, it is better if the control instance is running behind a load balancer, so that the actual server IP is never exposed.
-
 ## Setup
 
-- Clone the repo https://dev.zerodha.tech/diffusion/161/ to your host machine
+- Clone the repo to your host machine
 
 - Create a virtualenv to install Ansible
 
