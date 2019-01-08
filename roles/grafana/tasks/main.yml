@@ -3,28 +3,28 @@
 
 - name: Import Grafana GPG signing key
   apt_key:
-      url: "https://packagecloud.io/gpg.key"
+      url: "https://packages.grafana.com/gpg.key"
       state: present
 
 - name: Install apt-transport-https
   apt:
-   name: apt-transport-https
-   update_cache: yes
+      name: apt-transport-https
+      update_cache: yes
 
 - name: Add Grafana APT repo to source list
   apt_repository:
-   repo: deb https://packagecloud.io/grafana/stable/debian/ stretch main
-   state: present
-   update_cache: true
-   filename: /etc/apt/sources.list.d/grafana-5.x #.list extension is automatically added by ansible
+      repo: deb https://packages.grafana.com/oss/deb stable main
+      state: present
+      update_cache: true
+      filename: /etc/apt/sources.list.d/grafana-5.x #.list extension is automatically added by ansible
 
 - name: Install Grafana
   apt:
-   name: grafana
-   update_cache: yes
+      name: grafana
+      update_cache: yes
 
 - name: Starting Grafana as a service
   service:
-   name: grafana-server
-   state: started
-   enabled: yes
+      name: grafana-server
+      state: started
+      enabled: yes
