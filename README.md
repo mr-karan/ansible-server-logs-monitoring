@@ -88,4 +88,4 @@ Use `brew install gnu-tar` to install.
 
     - Open `grafana.ini` and change the settings in `[server.domain]` setting. ([Reference](http://docs.grafana.org/installation/behind_proxy/))
 
-    - Open `prometheus.service` set `--web-external-url`. ([Reference](https://www.robustperception.io/using-external-urls-and-proxies-with-prometheus))
+    - Open `prometheus.service` set `--web.external-url`. ([Reference](https://www.robustperception.io/using-external-urls-and-proxies-with-prometheus))
