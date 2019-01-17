@@ -1,0 +1,15 @@
+[Unit]
+Description=manages calert as a service
+Wants=network-online.target
+After=network.target
+
+[Service]
+User={{calert_user}}
+Group={{calert_user}}
+Type=simple
+ExecStart=/usr/local/bin/calert \
+    --config.file={{calert_config_dir}}/config.toml
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

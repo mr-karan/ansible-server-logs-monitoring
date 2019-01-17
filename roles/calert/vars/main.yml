@@ -1,0 +1,7 @@
+---
+go_arch_map:
+    x86_64: "x86_64"
+calert_user: root
+calert_version: 0.1.5
+calert_config_file: "calert.yml.j2"
+calert_config_dir: /etc/calert

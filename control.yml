@@ -6,16 +6,17 @@
   remote_user: "{{control_user}}"
   become: yes
   vars_files:
-  - vars.yml
-  - roles/elasticsearch/vars/main.yml
-  - roles/kibana/vars/main.yml
+      - vars.yml
+      - roles/elasticsearch/vars/main.yml
+      - roles/kibana/vars/main.yml
   # become_user: {{control_user}}
   roles:
-  - { role: java }
-  - { role: elasticsearch }
-  - { role: kibana }
-  - { role: logstash }
-  - { role: grafana }
-  - { role: prometheus }
-  - { role: node_exporter }
-  - { role: alertmanager }
+      - { role: java }
+      - { role: elasticsearch }
+      - { role: kibana }
+      - { role: logstash }
+      - { role: grafana }
+      - { role: prometheus }
+      - { role: node_exporter }
+      - { role: alertmanager }
+      - { role: calert }
